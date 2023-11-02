@@ -12,11 +12,6 @@ print('unique_labels:',labels_list)
 tags_list= df['tags'].unique()
 print('unique_tags:',tags_list)
 
-# print()
-
-# tags_list = df['tags'].unique()
-# print('unique_tags:',tags_list)
-
 
 
 
