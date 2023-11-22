@@ -11,8 +11,19 @@ print('unique_labels:',labels_list)
 # print(df['tags'].count())
 # print(df['tags'].value_counts())
 '''Finding unique tags'''
-tags_list= df['tags'].unique()
-print('unique_tags:',tags_list)
+tags= df['tags']
+
+def unique_tags(df):
+    lst1 = []
+    for i in df:
+        for j in eval(i):
+            if j not in lst1:
+                lst1.append(j)
+    return lst1
+
+uq_tags = unique_tags(tags)
+print(uq_tags)
+print(len(uq_tags))
 
 '''finding number of questions with given label'''
 label = input('Enter the label to find the questions associated with it?: ')
@@ -26,6 +37,11 @@ else:
 print(question_for_label)
 print(question_for_label.count())
 
+''''Determining length of question'''
+question = pd.Series('title')
+print('question: ', question)
+len_ques = lambda x: len(x)
+print(question.apply(len_ques))
 
 
 
