@@ -38,10 +38,10 @@ print(question_for_label)
 print(question_for_label.count())
 
 ''''Determining length of question'''
-question = pd.Series('title')
-print('question: ', question)
-len_ques = lambda x: len(x)
-print(question.apply(len_ques))
-
+y = lambda x: len(x.split(' '))
+new_df = df
+length = new_df['title'].apply(y)
+new_df.insert(column='title_length', value=length, loc=1)
+print(new_df.head())
 
 
