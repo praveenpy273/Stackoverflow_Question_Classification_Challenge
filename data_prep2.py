@@ -50,3 +50,7 @@ tag_length = new_df['tags'].apply(y)
 new_df.insert(column='len_tags', value=tag_length, loc=2)
 tag_df = new_df.drop('tags',axis = 1)
 print(tag_df.head())
+
+'''Filter the dataframe to only contain examples where label is “python”'''
+python_df = df.loc[df['label']=='python']
+print(python_df)
