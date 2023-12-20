@@ -2,7 +2,7 @@ import pandas as pd
 import csv
 
 df = pd.read_csv('Stackoverflow_Question_Classification_Challenge/full_data.csv',sep=';')
-# print(df.describe())
+print(df.describe())
 '''Finding unique labels'''
 labels_list= df['label'].unique()
 # print(df['label'].count())
@@ -54,3 +54,14 @@ print(tag_df.head())
 '''Filter the dataframe to only contain examples where label is “python”'''
 python_df = df.loc[df['label']=='python']
 print(python_df)
+
+''' drop extra columns'''
+columns_to_drop = ['title_length','len_tags']
+df = df.drop(columns_to_drop,axis=1)
+'''Filter the dataframe to only contain examples where tag is “python”'''
+def filter_tag(tag_list,tag):
+    return tag in tag_list
+
+filtered_tag = df['tags'].apply(filter_tag,tag='python')
+filtered_df_tag = df[filtered_tag]
+print(filtered_df_tag.tail())
