@@ -58,6 +58,7 @@ print(python_df)
 ''' drop extra columns'''
 columns_to_drop = ['title_length','len_tags']
 df = df.drop(columns_to_drop,axis=1)
+
 '''Filter the dataframe to only contain examples where tag is “python”'''
 def filter_tag(tag_list,tag):
     return tag in tag_list
