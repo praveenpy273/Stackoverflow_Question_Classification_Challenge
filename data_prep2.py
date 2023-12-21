@@ -80,9 +80,9 @@ def find_tag(tag_list):
     for tag in eval(tag_list):
         return tag
     
-x = df['tags'].apply(find_tag)
+sep_tag = df['tags'].apply(find_tag)
 
-group_tag = df.groupby(x)
+group_tag = df.groupby(sep_tag)
 count_per_tag = group_tag['title'].count()
 print(count_per_tag)
 
@@ -90,3 +90,15 @@ print(count_per_tag)
 done_group = df.groupby('done')
 done_list = done_group['title'].count()
 print(done_list)
+
+'''Check in how many questions does 1 or more tag appear as part of the question title'''
+def tags_to_check(ques,tag_list):
+  for tag in tag_list:
+    if tag in ques:
+      return True
+    else:
+      False
+
+df['contain_tag'] = df['title'].apply(tags_to_check,tag_list = sep_tag)
+total = df['contain_tag'].sum()
+print(total)
