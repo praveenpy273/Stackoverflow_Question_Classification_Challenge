@@ -85,3 +85,8 @@ x = df['tags'].apply(find_tag)
 group_tag = df.groupby(x)
 count_per_tag = group_tag['title'].count()
 print(count_per_tag)
+
+'''Group questions by “done” and count how many questions belong to each category of “done”'''
+done_group = df.groupby('done')
+done_list = done_group['title'].count()
+print(done_list)
