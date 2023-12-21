@@ -66,3 +66,22 @@ def filter_tag(tag_list,tag):
 filtered_tag = df['tags'].apply(filter_tag,tag='python')
 filtered_df_tag = df[filtered_tag]
 print(filtered_df_tag.tail())
+
+'''Group questions by tags and count how many questions belong to each tag'''
+# 1. group by tags
+
+grouped = df.groupby('tags')
+counts_per_tags = grouped['title'].count()
+print(counts_per_tags)
+
+# 2. group by tag
+
+def find_tag(tag_list):
+    for tag in eval(tag_list):
+        return tag
+    
+x = df['tags'].apply(find_tag)
+
+group_tag = df.groupby(x)
+count_per_tag = group_tag['title'].count()
+print(count_per_tag)
