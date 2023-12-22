@@ -102,3 +102,20 @@ def tags_to_check(ques,tag_list):
 df['contain_tag'] = df['title'].apply(tags_to_check,tag_list = sep_tag)
 total = df['contain_tag'].sum()
 print(total)
+
+'''What are the most common words in question titles or bodies?'''
+
+word_dict = {}
+for title in df['title']:
+  for word in title.split():
+    if word not in word_dict:
+      word_dict[word] = 1
+    else:
+      word_dict[word] += 1
+common_word = ''
+max_count = 0
+for i,v in word_dict.items():
+  if v > max_count:
+    common_word = i
+    max_count = v
+print(common_word,':', max_count)
